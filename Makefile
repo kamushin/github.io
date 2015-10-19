@@ -103,7 +103,7 @@ cf_upload: publish
 
 github: html
 	cd $(OUTPUTDIR)
-	git add .
+	git add --all
 	git commit -m "update"
 	git push
 
