@@ -46,6 +46,6 @@ DEFAULT_PAGINATION = 10
 #RELATIVE_URLS = True
 #see evernote
 #DELETE_OUTPUT_DIRECTORY = True
-#OUTPUT_RETENTION = [".hg", ".git", ".bzr"]
+OUTPUT_RETENTION = [".hg", ".git", ".bzr"]
 
 THEME = "pelican-themes/tuxlite_tbs"
