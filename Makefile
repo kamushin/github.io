@@ -104,7 +104,7 @@ cf_upload: publish
 github: html
 	cd $(OUTPUTDIR)
 	git add .
-	git commit -am "update"
+	git commit -m "update"
 	git push
 
 .PHONY: html help clean regenerate serve devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
