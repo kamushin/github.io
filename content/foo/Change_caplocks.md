@@ -1,6 +1,6 @@
-Title:把Capslock重定向为Ctrl
-Tags:foo
-Summary:以前的脚本莫名其妙的在新系统上不能用了，换个好点的脚本
+Title: 把Capslock重定向为Ctrl
+Tags: Linux
+Summary: 以前的脚本莫名其妙的在新系统上不能用了，换个好点的脚本
 
 Capslock这键平时没多大用，而Ctrl则用的非常多，所以把Capslock换成Ctrl也算是个比较常见的需求。
 

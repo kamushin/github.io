@@ -34,11 +34,11 @@ TRANSLATION_FEED_ATOM = None
 LINKS =  (('Pelican', 'http://getpelican.com/'),
           ('撸人', 'http://www.lulinux.com/'),
           ('Jinja2', 'http://jinja.pocoo.org/'),
-          ('You can modify those links in your config file', '#'),)
+          )
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('Kamushin', 'https://github.com/kamushin'),
+          )
 
 DEFAULT_PAGINATION = 10
 
@@ -48,4 +48,4 @@ DEFAULT_PAGINATION = 10
 #DELETE_OUTPUT_DIRECTORY = True
 #OUTPUT_RETENTION = [".hg", ".git", ".bzr"]
 
-THEME = "pelican-themes/bootstrap/"
+THEME = "pelican-themes/tuxlite_tbs"
