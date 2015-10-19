@@ -31,9 +31,10 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS =  (('Pelican', 'http://getpelican.com/'),
+LINKS =  (('liaojie', 'http://liaojie.me/'),
           ('撸人', 'http://www.lulinux.com/'),
-          ('Jinja2', 'http://jinja.pocoo.org/'),
+          ('ian', 'http://www.yinyien.com/'),
+          ('ixindoo', 'http://ixindoo.com/'),
           )
 
 # Social widget
