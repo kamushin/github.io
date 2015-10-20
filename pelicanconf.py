@@ -38,8 +38,8 @@ LINKS =  (('liaojie', 'http://liaojie.me/'),
           )
 
 # Social widget
-SOCIAL = (('Kamushin', 'https://github.com/kamushin'),
-        ('Kamushin', 'http://segmentfault.com/u/kamushin'),)
+SOCIAL = (('Github', 'https://github.com/kamushin'),
+        ('SegmentFault', 'http://segmentfault.com/u/kamushin'),)
 
 DEFAULT_PAGINATION = 10
 
