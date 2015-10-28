@@ -1,10 +1,13 @@
 Title: Use webpack together with browser-sync
 Tags: front-end
-Summary: Webpack is a module bundler.Browsersync makes your browser testing workflow faster by synchronising URLs, interactions and code changes across multiple devices.
+Summary: Webpack is a module bundler. Browsersync makes your browser testing workflow faster by synchronising URLs, interactions and code changes across multiple devices.
 
 Here are some tips about using `webpack` and `Browsersync` to improve working speed.
 
-#### Browsersync Proxy
+### Browsersync 
+Browsersync makes your browser testing workflow faster by synchronising URLs, interactions and code changes across multiple devices.
+
+### Proxy
     
     browser-sync start --proxy localhost:8888 --port 4000 --files index.html --files src/*
 
