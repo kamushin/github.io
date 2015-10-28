@@ -7,14 +7,14 @@ Here are some tips about using `webpack` and `Browsersync` to improve working sp
 ### Browsersync 
 Browsersync makes your browser testing workflow faster by synchronising URLs, interactions and code changes across multiple devices.
 
-### Proxy
+#### Proxy
     
     browser-sync start --proxy localhost:8888 --port 4000 --files index.html --files src/*
 
 Used to proxy ajax request to back-end server.
 
 ### Webpack
-    With webpack, don't need `require.js` and `require-react-plugin` loading in `index.html`. Very useful to me.
+With webpack, don't need `require.js` and `require-react-plugin` loading in `index.html`. Very useful to me.
 
 #### Work together 
 `webpack.config.js`:
