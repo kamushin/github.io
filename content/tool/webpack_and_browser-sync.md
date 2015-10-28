@@ -5,7 +5,8 @@ Summary: Webpack is a module bundler. Browsersync makes your browser testing wor
 Here are some tips about using `webpack` and `Browsersync` to improve working speed.
 
 ### Browsersync 
-Browsersync makes your browser testing workflow faster by synchronising URLs, interactions and code changes across multiple devices.
+Browsersync makes your browser testing workflow faster by synchronising URLs, interactions and code changes across multiple devices.   
+`npm install browser-sync@2.7.1 -g`
 
 #### Proxy
     
@@ -14,10 +15,12 @@ Browsersync makes your browser testing workflow faster by synchronising URLs, in
 Used to proxy ajax request to back-end server.
 
 ### Webpack
-With webpack, don't need `require.js` and `require-react-plugin` loading in `index.html`. Very useful to me.
+With webpack, don't need `require.js` and `require-react-plugin` loading in `index.html`. Very useful to me.   
+`npm install webpack -g`
 
 #### Work together 
-`webpack.config.js`:
+`npm install -g browser-sync-webpack-plugin`
+And config `webpack.config.js`:
 
     var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
     module.exports = {
