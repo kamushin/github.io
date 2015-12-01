@@ -1,4 +1,4 @@
-Title: Difference between ArrayList and Arrays.asList()
+Title: Difference between ArrayList and Arrays.asList() in Java
 Tags: Java
 Summary: ArrayList is resizeable-array, while Arrays.asList() is a "view" onto the primitives array so it's fixed-size array.
 
