@@ -28,3 +28,16 @@ And I also add a `-G` for file pattern.
     fxg () {
         ag -s -G $1 --column --nogroup --color $2 | nl && ag -s -G $1 --column --nogroup $2 | nl > /tmp/fxg.log
     }
+
+### Update: 15-12-9
+
+`Ag` on my MacOSX has an unstable sorting result. It makes the twice call of `Ag` return different order.  
+So I add `sort` to this command. 
+`-0` or `-print0` will take `space` in filename as a special character.
+
+    fxg () {
+        ag -s -G $1 --column --nogroup --color -0 $2 | sort | nl && ag -s -G $1 --column --nogroup -0 $2 | sort | nl > /tmp/fxg.log
+    }
+
+
+
