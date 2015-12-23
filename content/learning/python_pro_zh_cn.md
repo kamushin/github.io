@@ -220,6 +220,35 @@ def do_sth():
 do_sth()
 ```
 代码被调用的时候，不需要知道做了时间的统计，也不需要把统计代码混杂在业务逻辑中。   
+考虑下面的代码，用 Java 应该怎么实现？
+```
+def make_spin(spin_style=Default, words=""):
+    spinner = Spinner(spin_style)
+    queue = Queue()
+
+    def add_queue(func):
+        @wraps(func)
+        def wrapper():
+            func()
+            queue.put_nowait(1)
+        return wrapper
+
+    def decorator(func):
+        @wraps(func)
+        def wrapper():
+            process = Process(target=add_queue(func))
+            process.start()
+            while queue.empty():
+                print(text_type("\r{0}    {1}").format(spinner.next(), words),
+                      end="")
+                sys.stdout.flush()
+                time.sleep(0.1)
+            print('')
+        return wrapper
+    return decorator
+
+```
+
 Java中同样也有`@`字符的运用，不同的是，Java中那个叫`annotation`, 也就是注解。 
 注解是编译期的，它是用来做反射的，也就是提供给外部一些关于我本身信息的。和 Python 的用法没有关系。  
 
