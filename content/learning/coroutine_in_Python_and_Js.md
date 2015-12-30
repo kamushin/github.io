@@ -20,7 +20,7 @@ def fetch_impl(self, request, callback):
 `future` -- an instance of `Future` -- is an object that used to collect and send result to `generator`.  
 
 A coroutine that uses above `fetch`
-```
+```Python
 @gen.coroutine
 def request(self, uri):
     response = yield http.fetch(uri)
@@ -28,12 +28,12 @@ def request(self, uri):
 
 And we all know `@gen.coroutine` is a syntax sugar of   
 
-```
+```Python
 request = gen.coroutine(request)
 ```
 
 `coroutine` wrapper function, also exception handle removed 
-```
+```Python
 def _make_coroutine_wrapper(func, replace_callback):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
