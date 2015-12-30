@@ -57,8 +57,6 @@ def _make_coroutine_wrapper(func, replace_callback):
         return future
     return wrapper
 ```
-With the above code, we can learn that you pass a function with or without `yield` statement to the wrapper, if the function has `yield` statement in it's code, it will be a generator function.    
-Invoke this function will return a `types.GeneratorType`.   
 
 With the Tornado usage we can learn that the function after `yield` can be either a `coroutine` or a normal function.     
 Both of them returns a `Future`. You can write `return Future` by yourself or use `@coroutine`. But make sure your normal function is an async function.  
@@ -67,7 +65,7 @@ Both of them returns a `Future`. You can write `return Future` by yourself or us
 ```Python
 def __init__(self, gen, result_future, first_yielded): # init of Runner
     ... # some attrs bind
-    self.future = first_yielded # removed some complex logic, just show the normal logic of running the `request` generator.
+    self.future = first_yielded # removed some complex logic, just show the basic logic of running the `request` generator.
     self.io_loop.add_future(
                 self.future, lambda f: self.run()) # io_loop is a epoll based loop, the second function is a callback function when future is finished.
 
@@ -95,7 +93,8 @@ Runner is like the `co` lib in Js written by TJ, Runner use a While True rather 
   
 First of all, Runner add the future, or we can say the async function `fetch` to `io_loop`. If `fetch` is finish, itself will invoke the callback function `handle_response` to set data to `future`. And the `io_loop` will invoke another callback function `lambda f: self.run()` to run the function `run` to get the `result` from `future` by `value = future.result()` and `send` to the generator by `yield = gen.send(value)` and start the next block of the generator function if exists until the whole function is stoped and return a `StopIteration`.
 
-So let us figure out the effect of each object:  
+So let us figure out the effect of each object: 
+
 - generator function: a function with yield statement
 - generator: invoke a generator function will return a generator
 - coroutine: a wrapper function to wrapper a generator function. It will create a runner to run the generator.
