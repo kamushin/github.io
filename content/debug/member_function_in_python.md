@@ -23,6 +23,7 @@ print sys.getrefcount(foo) # output: 3
 ```
 
 Here are 3 objects ref to `foo`: 
+
 - `foo` as a local variable, 
 - a ref in getrefcount
 - a ref in `foo.b.cb`
