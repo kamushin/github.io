@@ -5,6 +5,7 @@ Summary: reading notes of ArchitectureOfDatabaseSystem
 > A Lightweight Thread Package is an application-level construct
 that supports multiple threads within a single OS
 process  -- page 150
+>
 Each DBMS thread is
 programmed to manage its own state, to perform all potentially blocking
 operations (e.g., I/Os) via non-blocking, asynchronous interfaces,
@@ -24,7 +25,7 @@ co 应用必须使用 non-block io 是众所周知的，而像 innodb 这样完�
 非常契合，因为至少在 Linux 上 aio 还是不支持buffer io 的。不过 MySQL 是用了内核线程的，大概是它比较新的缘故。  
 不过有意思的是，事情的发展往往是三十年河东三十年河西的，文章中提到其实 co 的概念是非常古老的，甚至在1990年的时候，
 因为没有足够好的操作系统级别的线程，大家转而使用了 co。 而在内核线程如此成熟的今天，在学习的时候，线程模型首先进入
-了我们的视角，
+了我们的视角，导致很多人以为 co 是最近才发明出来的。  
 不过现代数据库只有MSSQLServer 提供 co 的支持，而且不是默认选项, 默认的是线程池。 co 这玩意在MS那里叫 Fibers。 话说回来，响马也
 做了个 fibjs，应该是向这个名字致敬的。
 
@@ -50,7 +51,8 @@ it produces. More complex approaches implement client-side cursor
 caching and use the DBMS client to store results likely to be fetched
 in the near future rather than relying on the OS communications
 buffers. -- page 158
-A relational query processor takes a declarative SQL statement,
+
+>A relational query processor takes a declarative SQL statement,
 validates it, optimizes it into a procedural dataflow execution plan,
 and (subject to admission control) executes that dataflow program on
 behalf of a client program. The client program then fetches (“pulls”) the
@@ -98,7 +100,8 @@ updating. Both finding and updating these rows can be costly. Rows
 need to move when an update changes the row size and space is unavailable
 on the current page for the freshly updated row. And many rows
 need to move when a B+-tree is split. -- page 195 
-DB2 uses a forwarding pointer
+
+>DB2 uses a forwarding pointer
 to avoid the first problem. This requires a second I/O to find a moved
 page, but avoids having to update the secondary index --page 195 
 
@@ -152,13 +155,15 @@ in place, (b) unpinned buffer pool frames can be “stolen” (and the modified
 data pages written back to disk) even if they contain uncommitted
 data, and (c) buffer pool pages need not be “forced” (flushed) to the
 database before a commit request returns to the user -- page 229 
-Another fast-path challenge in logging is to keep log records as small
+
+>Another fast-path challenge in logging is to keep log records as small
 as possible, in order to increase the throughput of log I/O activity.
 A natural optimization is to log logical operations (e.g., “insert (Bob,
 $25000) into EMP”) rather than physical operations (e.g., the afterimages
 for all byte ranges modified via the tuple insertion, including
 bytes on both heap file and index blocks.)  -- page 229
-Rather than starting from the very first log
+
+>Rather than starting from the very first log
 record, a correct result will be obtained by starting recovery at the
 oldest of these two log records: (1) the log record describing the earliest
 change to the oldest dirty page in the buffer pool, and (2) the log
