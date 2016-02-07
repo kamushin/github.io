@@ -28,4 +28,4 @@ It needs data to simulate how to give a balance between `Q` ans `x`.
 
 
 ### Summary
-Alibaba has enough resource and data to calculat `The Tipping Point` with their proud big data tech. But they did not use and made the whole event a failure. So sad.
+Alibaba has enough resource and data to calculat `The Tipping Point` with their proud big data tech. But they did not use and made the whole event a failure. Sigh.
