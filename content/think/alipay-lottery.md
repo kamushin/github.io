@@ -19,6 +19,12 @@ It's a threshold model that is to say there is a threshold to decide if Alipay l
 Sorry I forget the real name of this model. In this model, `Q` is quality of a drama, `E` is bias, and `T` is threshold of satisfaction.
 If `Q + E > T`, people will stand up and clap hands for a drama. And if `x` percents of people stand and clap hands, everyone will stand and clap hands.  
 `x` is called `The Tipping Point`.
+ 
+
+### Solution 
+In this event, two of the most importent values are `Q` and `x`. if `Q` is too small, for example, everyone got 0.1 CNY, it will make this event meaningless and be forgotten.
+And if `x` is too small, like now, most of people won't stand up and give a applause.  
+It needs data to simulate how to give a balance between `Q` ans `x`.
 
 
 ### Summary
