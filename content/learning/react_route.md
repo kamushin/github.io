@@ -10,7 +10,6 @@ import { Router} from 'react-router'
 ReactDOM.render (( 
  <Router>
    ...
- </Router> 
 ), document.body);
 ```
 I found something in url like `#/home/k=ckuvupr`. What the hell is this?  
@@ -22,7 +21,6 @@ import { browserHistory } from 'react-router'
 ReactDOM.render (( 
  <Router history={browserHistory} >
    ...
- </Router> 
 ), document.body);
 ```
 
@@ -31,7 +29,7 @@ I forgot to deal with this, and went to write other codes.
 
 Today when I c&p this chunk of code to my new project, using some new tools. The build tool automatically install
 react-router v2.0 for me. While the hash tag is gone, and url looks like the **real** url.
-But it cause another problem, that is when the url is like the **real** url, it means that I should set the server side route to `* -> index.html` rather than `/ -> index.html`.  
+But it cause another problem, that is when the url is like the **real** url, it means that I should set the server side route to `/* -> index.html` rather than `/ -> index.html`.  
 Otherwise, it will get a 404 error when the url `/home` is re-flushed. And the problem will not raise while using `hashHistory`, because the url is like `/#/home` and it is still `/`, the string after hash tag is not in the route rule.
 [Docs about them.](https://github.com/reactjs/react-router/blob/master/docs/guides/Histories.md)  
 
