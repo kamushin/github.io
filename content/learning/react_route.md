@@ -8,7 +8,7 @@ When I was using React-Router v1.0, I read the doc in github and wrote the code 
 ```JavaScript
 import { Router} from 'react-router'
 ReactDOM.render (( 
- <Router} />
+ <Router />
    ...
  </Router> 
 ), document.body);
