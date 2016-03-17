@@ -5,19 +5,19 @@ Summary: something I met about hashHistory and browserHistory
 `hashHistory` and `browserHistory` are two kinds of common React-Router `Histories` implementations.  
 When I was using React-Router v1.0, I read the doc in github and wrote the code like this  
 
-```JavaScript
+```javascript
 import { Router} from 'react-router'
 ReactDOM.render (( 
- <Router >
+ <Router>
    ...
  </Router> 
 ), document.body);
 ```
-I found something like `#/home/k=ckuvupr`. What the hell is this?  
-I went back to the doc and changed the code with `browserHistory`, with the doc, I knew the default is `hashHistory`, 
-which will make a `#` -- hash.
+I found something in url like `#/home/k=ckuvupr`. What the hell is this?  
+I went back to the doc and changed the code with `browserHistory`. With the doc, I knew the default implementation is `hashHistory`, 
+which will make a `#` -- hash in url.
 
-```JavaScript
+```javascript
 import { browserHistory } from 'react-router'
 ReactDOM.render (( 
  <Router history={browserHistory} >
