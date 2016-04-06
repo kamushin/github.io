@@ -199,6 +199,7 @@ Here is my final solution.
 ### Summary
 
 In this case, I learnt
+
 - how to use AOP and annotation
 - there is a mechanism called proxy used by Spring
 - there are two implements of proxy mechanism, they are different
