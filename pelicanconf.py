@@ -52,5 +52,5 @@ OUTPUT_RETENTION = [".hg", ".git", ".bzr"]
 THEME = "pelican-themes/tuxlite_tbs"
 
 MENUITEMS = (
-        ('ABOUT', '/about.html'),
+        ('ABOUT', '/misc/about.html'),
         )
