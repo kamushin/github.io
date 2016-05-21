@@ -1,6 +1,12 @@
-Title: loggers and loggers manager in Python
+Title: Loggers in Python
 Tags: Python
-Summary: Loggers will be stored in manager in Python. And handlers will leak if not be removed.
+Summary: 1. Loggers will be stored in manager in Python. Handlers will cause resource leak if not removed.
+2. Loggers will send to stderr by default. So make sure stderr has a receiver.
+
+
+### Logger manager
+Loggers will be stored in manager in Python. Handlers will cause resource leak if not removed.
+
 
 ``` Python
 def getLogger(name=None):
@@ -53,3 +59,8 @@ class Manager(object):
 ```
 `Loggers` in Python are stored in `Logger.manager` with a specified name. If create a logger with a task rather than a file, loggers stored in manager will increase and never be deleted.  
 It becomes even worse when the logger has a handler, eg. write logs to database. It may cause a connections leak.
+
+#### Log emit will hang if stderr is not received
+
+Log info will send to stderr by default, make sure stderr buffer has a removed, otherwise stream write will be blocked.
+
