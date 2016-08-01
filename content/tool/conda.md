@@ -1,4 +1,4 @@
-Title: 推荐一个更好的Python 环境和包管理工具
+Title: 推荐一个更好的Python 环境和包管理工具 canda
 Tags: conda
 Summary: conda -- 一个更好的Python 环境和包管理工具
 
