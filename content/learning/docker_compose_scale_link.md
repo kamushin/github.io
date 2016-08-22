@@ -5,7 +5,7 @@ Summary: Learned how to use docker compose to create a scalable web app with ngi
 Month ago, I built my apps with docker and used Nginx outside the docker as a reverse proxy server. Now I have something better to make a change.  
 In docker's world, every component of a website should running as a container, include app, db, and Nginx as well.
 A docker compose YAML I found online as follows, from [a blog](http://anandmanisankar.com/posts/docker-container-nginx-node-redis-example/):
-```
+``` yaml
 nginx:
     build: ./nginx
     links:
@@ -40,7 +40,7 @@ redis:
 The author made 3 app containers, 1 redis container and 1 nginx container. I find some ugly implement here that each node is hard coded in conf file, so if nodes need to be scaled up, we should add more and more nodes in the conf file.  
 `docker compose scale` is a useful command here to let us scale up our app containers elegantly. `docker compose scale node=3 nginx=1 redis=1` will automatically create 3 node containers for us.  
 But there is another dark cloud on the sky. In the previous version, nginx config file is simply as follows:
-```
+``` nginx
 worker_processes 4;
 
 events { worker_connections 1024; }
@@ -79,7 +79,16 @@ So if we have 3 node IP which has the same hostname, we can just rewrite conf to
         }
 
 ```
-Unfortunately, docker compose v1 seems not support group nodes into the same hostname.
+Unfortunately, docker compose v1 seems not support group nodes into the same hostname.   
+It will generate hosts as follows:
+```
+
+172.17.0.21 node 8a1297a5b3e4 compose_node_1
+172.17.0.21 node_1 8a1297a5b3e4 compose_node_1
+172.17.0.22 node_2 069dd46836aa compose_node_2
+
+```
+Only one container will get the name `node`. After searching in Github, I got some interesting facts:
 
 The interaction of scaling with networking (as with links) is unsatisfactory at the moment - you'll basically get a bunch of entries in /etc/hosts along these lines:
 ```
