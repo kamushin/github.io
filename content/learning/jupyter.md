@@ -15,7 +15,7 @@ Summary: 关于一个在nginx后的jupyter站点的小日记.
 
 为了提供可靠的域名转发服务，我会用Nginx根据域名转发到docker上绑定的Port。  
 这里有个细节需要注意，因为`jupyter`用到了`websocket`技术，所以在nginx的配置上略有不同。
-```
+``` nginx
         location ~* /(api/kernels/[^/]+/(channels|iopub|shell|stdin)|terminals/websocket)/? {
             proxy_pass http://127.0.0.1:8003;
 
