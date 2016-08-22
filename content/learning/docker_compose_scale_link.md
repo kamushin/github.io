@@ -108,4 +108,4 @@ This isn't a real solution either, of course - we're still working towards one -
 
 It may already be improved in v2 with docker 1.10, but I have not get the chance to use docker 1.10.  
 
-I think this way is better since we can easily scale up and dont need to change the config.  DevOps should evolve in this way. 
+I think this way is better since we can easily scale up and dont need to change the config.  DevOps should evolve in this scalable way.
