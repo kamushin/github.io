@@ -12,7 +12,7 @@ Summary: 研究下react-route的源码找到如何正确分离route配置的方�
 
 举个例子：
 
-```javascript
+``` jsx
 
   <Router history={browserHistory}>
     <Route path='/' component={Layout}>
