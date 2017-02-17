@@ -1,0 +1,64 @@
+Title: 从一次失效的文件锁谈 Python 的垃圾回收机制
+Tags: python gc
+Summary: 不同的调用方式导致了文件锁的成功与失效, 原因是触发了 Python 的垃圾回收机制. 引用计数, 如何避免环形引用.
+
+### 引
+
+有同事发现 Python 在函数中进行文件锁, 退出函数后, 文件锁就失效了. 我简单想下, 应该是函数中锁文件后, 退出函数, 文件句柄变量被 GC, 导致文件锁也失效了.  
+写了段代码验证这个情况.
+
+```
+
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import fcntl
+import time
+
+
+def inline():
+    fcntl.flock(open('/tmp/locktest', 'w'), fcntl.LOCK_EX | fcntl.LOCK_NB)
+
+def twoLines():
+    fd = open('/tmp/locktest', 'w')
+    fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    return fd
+
+
+lockFile = inline # will print No error
+# lockFile = twoLines  # will print blocking 
+fd = None
+
+fd = lockFile()
+try:
+    fd = lockFile()
+except IOError:
+    print("can't immediately write-lock the file ($!), blocking ...")
+else:
+    print("No error")
+
+```
+
+### Python 中实现的 GC
+
+#### 引用计数
+
+引用计数法在对象内部维护了一个被其他对象引用的计数值, 当值为0时, 认为不再有其他对象持有它的引用, 则无法拿到它, 成为垃圾.
+
+```
+// object.h
+struct _object {
+    Py_ssize_t ob_refcnt;
+    struct PyTypeObject *ob_type;
+} PyObject;
+
+```
+在 Python 源码中, 类的结构体都具有一个`ob_refcnt`的部分, 用来做引用计数.
+
+引用计数的优点是高效,不需要停顿,易于实现, 缺点是无法解决循环引用, 计数次数和引用赋值成正比, 而 mark and sweep则只和对象数量成正比.
+
+
+
+### 标记清除
+
+
+
